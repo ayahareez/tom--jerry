@@ -66,11 +66,11 @@ public class death : MonoBehaviour
     //}
     private void ReloadInUpdate()
     {
-        
-        if ((cat == null && mouse == null)&&!isDone)
-        {
-            gameManager.GameRestart();
-        }
+        //Debug.Log(cat.gameObject);
+        //if ((cat == null && mouse == null)&&!isDone)
+        //{
+        //    gameManager.GameRestart();
+        //}
     }
 
 

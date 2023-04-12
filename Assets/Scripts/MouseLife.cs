@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MouseLife : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer sp;
     private Animator anim;
     private Rigidbody2D myBody;
     private Vector2 tempos;
@@ -70,7 +71,10 @@ public class MouseLife : MonoBehaviour
     IEnumerator Death()
     {
         yield return new WaitForSeconds(0.2f);
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        myBody.bodyType = RigidbodyType2D.Static;
+        sp.enabled = false;
+        gameManager.GameRestart();
     }
     IEnumerator Hurt()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Run : MonoBehaviour
 {
-
+    [SerializeField] private GameManager gameManager;
     float speed = 20;
     float speedIncreaseAmount = 0.1f;
     public Transform move;
@@ -26,7 +26,11 @@ public class Run : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(speed, 0f, 0f) * Time.deltaTime;
+        if (!gameManager.isActive)
+        {
+            transform.position += new Vector3(speed, 0f, 0f) * Time.deltaTime;
+            
+        }
         
     }
     //private void OnCollisionEnter2D(Collision2D collision)

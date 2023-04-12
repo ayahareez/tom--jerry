@@ -59,7 +59,8 @@ public class MouseMovement : MonoBehaviour
         //{
         //    diamondTextM.text = "finish";
         //}
-        transform.position += new Vector3(speed, 0f, 0f) * Time.deltaTime;
+        //transform.position += new Vector3(speed, 0f, 0f) * Time.deltaTime;
+        myBody.velocity = new Vector2(speed, myBody.velocity.y);
         PlayerJumpKeyboard();
 
 

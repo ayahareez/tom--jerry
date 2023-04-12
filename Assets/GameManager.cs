@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private float remainM;
     private float remainC;
     public Rigidbody2D camera;
+    public bool isActive=false;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +55,8 @@ public class GameManager : MonoBehaviour
         camera.bodyType = RigidbodyType2D.Static;
         camera.constraints = RigidbodyConstraints2D.FreezePositionX;
         gameRestart.SetActive(true);
-        gameObject.SetActive(false);
+        isActive= true;
+        //gameObject.SetActive(false);
         camera.constraints = RigidbodyConstraints2D.FreezePositionX;
         if (distanceM < 235)
         {
