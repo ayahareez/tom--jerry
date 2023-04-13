@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MouseLife : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer sp;
+    public SpriteRenderer sp;
     private Animator anim;
     private Rigidbody2D myBody;
     private Vector2 tempos;
@@ -32,7 +32,10 @@ public class MouseLife : MonoBehaviour
         //    //Reload();
         //    gameManager.GameRestart();
         //}
-
+        if (!gameObject.activeSelf && !cat.activeSelf)
+        {
+            gameManager.GameRestart();
+        }
     }
     //IEnumerator ReloadScene()
     //{
@@ -72,24 +75,31 @@ public class MouseLife : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         //Destroy(gameObject);
+
         myBody.bodyType = RigidbodyType2D.Static;
         sp.enabled = false;
-        gameManager.GameRestart();
-    }
-    IEnumerator Hurt()
-    {
-        yield return new WaitForSeconds(1f);
-        //if (gameObject==null&&cat==null)
-        //{
-
-        //    // Reload();
-        //    gameManager.GameRestart();
-        //}
-        if (!gameObject && !cat)
+        gameObject.SetActive(false);
+        Debug.Log(gameObject.activeSelf);
+        //gameManager.GameRestart();
+        if (!gameObject.activeSelf && !cat.activeSelf)
         {
-
-            // Reload();
             gameManager.GameRestart();
         }
     }
+    //IEnumerator Hurt()
+    //{
+    //    yield return new WaitForSeconds(1f);
+    //    //if (gameObject==null&&cat==null)
+    //    //{
+
+    //    //    // Reload();
+    //    //    gameManager.GameRestart();
+    //    //}
+    //    if (!gameObject && !cat)
+    //    {
+
+    //        // Reload();
+    //        gameManager.GameRestart();
+    //    }
+    //}
 }

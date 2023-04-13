@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class CatLife : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer sp;
     private Animator anim;
     private Rigidbody2D myBody;
     private Vector2 tempos;
@@ -32,7 +33,10 @@ public class CatLife : MonoBehaviour
         //    //Reload();
         //    gameManager.GameRestart();
         //}
-
+        if (!gameObject.activeSelf && !mouse.activeSelf)
+        {
+            gameManager.GameRestart();
+        }
     }
     //IEnumerator ReloadScene()
     //{
@@ -78,17 +82,21 @@ public class CatLife : MonoBehaviour
     IEnumerator Death()
     {
         yield return new WaitForSeconds(0.2f);
-        Destroy(gameObject);
+        // Destroy(gameObject);
+        myBody.bodyType = RigidbodyType2D.Static;
+        sp.enabled = false;
+        gameObject.SetActive(false);
+       
     }
-    IEnumerator Hurt()
-    {
-        yield return new WaitForSeconds(1f);
-        if (gameObject == null && mouse == null)
-        {
+    //IEnumerator Hurt()
+    //{
+    //    yield return new WaitForSeconds(1f);
+    //    if (gameObject == null && mouse == null)
+    //    {
 
-            // Reload();
-            gameManager.GameRestart();
-        }
-    }
+    //        // Reload();
+    //        gameManager.GameRestart();
+    //    }
+    //}
 }
     

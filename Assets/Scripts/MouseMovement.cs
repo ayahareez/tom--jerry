@@ -19,7 +19,6 @@ public class MouseMovement : MonoBehaviour
     float speed = 18;
     public Transform move;
     public Rigidbody2D myBody;
-    float originalSpeed;
     public float normalSpeed;
     public float boostSpeed=24;
     private float speedCoolDown=1;
@@ -60,7 +59,7 @@ public class MouseMovement : MonoBehaviour
         //    diamondTextM.text = "finish";
         //}
         //transform.position += new Vector3(speed, 0f, 0f) * Time.deltaTime;
-        myBody.velocity = new Vector2(speed, myBody.velocity.y);
+        myBody.velocity = new Vector2(speed,myBody.velocity.y);
         PlayerJumpKeyboard();
 
 
