@@ -6,11 +6,9 @@ using UnityEngine.SceneManagement;
 public class death : MonoBehaviour
 {
     public static int Deads = 0;
-    private bool isDead = false; // flag to prevent repeated deaths
-    private bool isDone = false;
     public GameManager gameManager;
-    [SerializeField] private GameObject cat;
-    [SerializeField] private GameObject mouse;
+    [SerializeField] private CatLife cat;
+    [SerializeField] private MouseLife mouse;
     private Camera camera;
     void Start()
     {
@@ -19,21 +17,25 @@ public class death : MonoBehaviour
 
     private void Update()
     {
+        bothDead();
         // Get the position of the player relative to the camera's viewport
-        Vector3 mouseScreenPos = Camera.main.WorldToViewportPoint(GameObject.FindGameObjectWithTag("Mouse").transform.position);
+        //Vector3 mouseScreenPos = Camera.main.WorldToViewportPoint(GameObject.FindGameObjectWithTag("Mouse").transform.position);
 
-        // If the player has left the camera view, kill them
-        Vector3 catScreenPos = Camera.main.WorldToViewportPoint(GameObject.FindGameObjectWithTag("Cat").transform.position);
+        //// If the player has left the camera view, kill them
+        //Vector3 catScreenPos = Camera.main.WorldToViewportPoint(GameObject.FindGameObjectWithTag("Cat").transform.position);
 
-        // If the player has left the camera view, kill them
-        
-        if ((mouseScreenPos.x < -0.1 || mouseScreenPos.x > 1.1 || mouseScreenPos.y < 0 || mouseScreenPos.y > 1)&&!isDead&& (catScreenPos.x < -0.1 || catScreenPos.x > 1.1 || catScreenPos.y < 0 || catScreenPos.y > 1) && !isDead)
-        {
-            KillPlayer();
-            gameManager.GameRestart();
-            camera.transform.position = new Vector3(0f, 0f, 0f);
-            //StartCoroutine("ReloadScene");
-        }
+        //// If the player has left the camera view, kill them
+        //Debug.Log("before condition");
+
+        //if ((mouseScreenPos.x < -0.1 || mouseScreenPos.x > 1.1 || mouseScreenPos.y < 0 || mouseScreenPos.y > 1)&& (catScreenPos.x < -0.1 || catScreenPos.x > 1.1 || catScreenPos.y < 0 || catScreenPos.y > 1) )
+        //{
+        //    Debug.Log("cat bool" + cat.dead);
+        //    Debug.Log("mouse bool" + mouse.dead);
+        //    KillPlayer();
+        //    gameManager.GameRestart();
+        //    camera.transform.position = new Vector3(0f, 0f, 0f);
+        //    //StartCoroutine("ReloadScene");
+        //}
         // Check if either player is inside the camera view frustum
 
         //if ((catScreenPos.x < -0.1 || catScreenPos.x > 1.1 || catScreenPos.y < 0 || catScreenPos.y > 1) && !isDead)
@@ -43,7 +45,7 @@ public class death : MonoBehaviour
         //    //StartCoroutine("ReloadScene");
         //}
 
-        ReloadInUpdate();
+        
     }
 
     //private void OnTriggerEnter2D(Collider2D collision)
@@ -64,6 +66,21 @@ public class death : MonoBehaviour
     //    //loadscene wait for name of the scene
     //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     //}
+    private void bothDead()
+    {
+        Debug.Log("inside bothDead FUNC");
+        if(cat.dead&&mouse.dead) {
+            Debug.Log("cat.dead " + cat.dead);
+            Debug.Log("mouse.dead " + mouse.dead);
+            gameManager.GameRestart();
+        }
+    }
+
+    
+
+
+
+
     private void ReloadInUpdate()
     {
         //Debug.Log(cat.gameObject);
@@ -76,7 +93,7 @@ public class death : MonoBehaviour
 
     private void KillPlayer()
     {
-        isDead = true;
+
         // Play death animation or sound effect here
         //if (GameObject.FindGameObjectWithTag("Mouse"))
         //{
@@ -86,12 +103,12 @@ public class death : MonoBehaviour
         //{
         //    Destroy(GameObject.FindGameObjectWithTag("Cat"));
         //}
-        if ((!cat.activeSelf) || (!mouse.activeSelf))
-        {
-            // Destroy the camera object
-            Destroy(camera.gameObject);
-            Debug.Log("dead");
-        }
+        //if ((!cat.activeSelf) || (!mouse.activeSelf))
+        //{
+        //    // Destroy the camera object
+        //    Destroy(camera.gameObject);
+        //    Debug.Log("dead");
+        //}
 
         // Optionally, handle game over or reset logic here
     }

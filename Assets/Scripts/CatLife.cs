@@ -5,50 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class CatLife : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer sp;
+    private SpriteRenderer sp;
     private Animator anim;
     private Rigidbody2D myBody;
     private Vector2 tempos;
     [SerializeField] private AudioSource catDie;
     public GameManager gameManager;
-    [SerializeField] private GameObject mouse;
+    [SerializeField] private MouseLife mouse;
+    public bool dead = false;
     // Start is called before the first frame update
     private void Start()
     {
         myBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-       
+        sp = GetComponent<SpriteRenderer>();
         tempos = transform.position;
     }
     private void Update()
     {
-        // Get the position of the player relative to the camera's viewport
-        //Vector3 playerScreenPos = Camera.main.WorldToViewportPoint(GameObject.FindGameObjectWithTag("Player").transform.position);
-
-        //// If the player has left the camera view, kill them
-        //if (playerScreenPos.x < -0.1 || playerScreenPos.x > 1.1 || playerScreenPos.y < 0 || playerScreenPos.y > 1)
-        //{
-
-        //    //StartCoroutine("ReloadScene");
-        //    //Reload();
-        //    gameManager.GameRestart();
-        //}
-        if (!gameObject.activeSelf && !mouse.activeSelf)
-        {
-            gameManager.GameRestart();
-        }
+        outOfScreen();
+        bothDead();
     }
-    //IEnumerator ReloadScene()
-    //{
-    //    yield return new WaitForSeconds(2f);
-    //    Reload();
-    //}
-    //private void Reload()
-    //{
-
-    //    //loadscene wait for name of the scene
-    //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    //}
 
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -84,20 +61,40 @@ public class CatLife : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         // Destroy(gameObject);
         myBody.bodyType = RigidbodyType2D.Static;
-        sp.enabled = false;
-        gameObject.SetActive(false);
-        gameManager.GameRestart();
-       
-    }
-    //IEnumerator Hurt()
-    //{
-    //    yield return new WaitForSeconds(1f);
-    //    if (gameObject == null && mouse == null)
-    //    {
 
-    //        // Reload();
-    //        gameManager.GameRestart();
-    //    }
-    //}
+        sp.enabled = false;
+        // gameManager.GameRestart();
+        dead = true;
+        Debug.Log("inside cat" + dead);
+
+
+    }
+
+    private void outOfScreen()
+    {
+        Vector3 mouseScreenPos = Camera.main.WorldToViewportPoint(GameObject.FindGameObjectWithTag("Mouse").transform.position);
+
+        // If the player has left the camera view, kill them
+        Vector3 catScreenPos = Camera.main.WorldToViewportPoint(GameObject.FindGameObjectWithTag("Cat").transform.position);
+
+        // If the player has left the camera view, kill them
+        Debug.Log("before condition");
+        Debug.Log("inside outOfScreen FUNC");
+        if (catScreenPos.x < -0.1 || catScreenPos.x > 1.1 || catScreenPos.y < 0 || catScreenPos.y > 1)
+        {
+            dead = true;
+        }
+
+    }
+    private void bothDead()
+    {
+        Debug.Log("inside bothDead FUNC: mouse " + mouse.dead + "/ cat " + dead);
+        if (dead && mouse.dead)
+        {
+            Debug.Log("cat.dead " + dead);
+            Debug.Log("mouse.dead " + mouse.dead);
+            gameManager.GameRestart();
+        }
+    }
 }
-    
+

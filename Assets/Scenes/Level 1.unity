@@ -4904,6 +4904,8 @@ MonoBehaviour:
   checkPoint: {fileID: 233939823}
   dC: {fileID: 1085487199}
   dM: {fileID: 1247478096}
+  cat: {fileID: 1761893825}
+  mouse: {fileID: 1183408082}
   camera: {fileID: 519420034}
   isActive: 0
   isdead: 0
@@ -6176,6 +6178,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5880173061166366542, guid: 0e81759148becf94cadb54e76bde209c, type: 3}
   m_PrefabInstance: {fileID: 5880173060686079317}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1183408082 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 687024938, guid: 0e81759148becf94cadb54e76bde209c, type: 3}
+  m_PrefabInstance: {fileID: 5880173060686079317}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183408076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dd98713e3b927641b84bade5c6e4e00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1195737581
 GameObject:
   m_ObjectHideFlags: 0
@@ -7224,7 +7237,7 @@ GameObject:
   - component: {fileID: 1321739815}
   m_Layer: 0
   m_Name: haifLine
-  m_TagString: Kill
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9119,6 +9132,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7308640442224539714, guid: fd302da2c023f474381ae581ececfe17, type: 3}
   m_PrefabInstance: {fileID: 1993103345}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1761893825 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 39639649, guid: fd302da2c023f474381ae581ececfe17, type: 3}
+  m_PrefabInstance: {fileID: 1993103345}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761893819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0a3b6cbd847b284b8198b3ae7d638b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1797499685
 GameObject:
   m_ObjectHideFlags: 0
@@ -10125,7 +10149,7 @@ PrefabInstance:
     - target: {fileID: 39639649, guid: fd302da2c023f474381ae581ececfe17, type: 3}
       propertyPath: mouse
       value: 
-      objectReference: {fileID: 1183408076}
+      objectReference: {fileID: 1183408082}
     - target: {fileID: 39639649, guid: fd302da2c023f474381ae581ececfe17, type: 3}
       propertyPath: gameManager
       value: 
@@ -10190,7 +10214,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7308640442224539726, guid: fd302da2c023f474381ae581ececfe17, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fd302da2c023f474381ae581ececfe17, type: 3}
 --- !u!1 &2022352925
 GameObject:
@@ -11004,7 +11029,7 @@ PrefabInstance:
     - target: {fileID: 687024938, guid: 0e81759148becf94cadb54e76bde209c, type: 3}
       propertyPath: cat
       value: 
-      objectReference: {fileID: 1761893819}
+      objectReference: {fileID: 1761893825}
     - target: {fileID: 687024938, guid: 0e81759148becf94cadb54e76bde209c, type: 3}
       propertyPath: gameManager
       value: 
@@ -11064,10 +11089,15 @@ PrefabInstance:
     - target: {fileID: 5880173061166366583, guid: 0e81759148becf94cadb54e76bde209c, type: 3}
       propertyPath: cat
       value: 
-      objectReference: {fileID: 1761893819}
+      objectReference: {fileID: 1761893825}
+    - target: {fileID: 5880173061166366583, guid: 0e81759148becf94cadb54e76bde209c, type: 3}
+      propertyPath: mouse
+      value: 
+      objectReference: {fileID: 1183408082}
     - target: {fileID: 5880173061166366583, guid: 0e81759148becf94cadb54e76bde209c, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 751859091}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5880173061166366583, guid: 0e81759148becf94cadb54e76bde209c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0e81759148becf94cadb54e76bde209c, type: 3}

@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform checkPoint;
     [SerializeField] private Text dC;
     [SerializeField] private Text dM;
+    [SerializeField] private CatLife cat;
+    [SerializeField] private MouseLife mouse;
     private float distanceM;
     private float distanceC;
     private float remainM;
