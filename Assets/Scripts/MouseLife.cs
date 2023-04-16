@@ -80,11 +80,11 @@ public class MouseLife : MonoBehaviour
         sp.enabled = false;
         gameObject.SetActive(false);
         Debug.Log(gameObject.activeSelf);
-        //gameManager.GameRestart();
-        if (!gameObject.activeSelf && !cat.activeSelf)
-        {
-            gameManager.GameRestart();
-        }
+        gameManager.GameRestart();
+        //if (!gameObject.activeSelf && !cat.activeSelf)
+        //{
+        //    gameManager.GameRestart();
+        //}
     }
     //IEnumerator Hurt()
     //{

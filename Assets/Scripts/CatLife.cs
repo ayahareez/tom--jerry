@@ -86,6 +86,7 @@ public class CatLife : MonoBehaviour
         myBody.bodyType = RigidbodyType2D.Static;
         sp.enabled = false;
         gameObject.SetActive(false);
+        gameManager.GameRestart();
        
     }
     //IEnumerator Hurt()
