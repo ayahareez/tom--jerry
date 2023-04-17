@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5880173061166366581}
   - component: {fileID: 7069645317238431833}
   - component: {fileID: 5880173061166366580}
-  - component: {fileID: 5880173061166366583}
   - component: {fileID: 687024938}
   - component: {fileID: 687024946}
   - component: {fileID: 687024955}
@@ -179,21 +178,6 @@ MonoBehaviour:
   normalSpeed: 0
   boostSpeed: 30
   jump: {fileID: 687024955}
---- !u!114 &5880173061166366583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5880173061166366542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 513cc8fe5a18e4a4da21caaf1d9a41a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  cat: {fileID: 0}
-  mouse: {fileID: 5880173061166366542}
 --- !u!114 &687024938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +194,8 @@ MonoBehaviour:
   mouseDie: {fileID: 687024957}
   gameManager: {fileID: 0}
   cat: {fileID: 0}
+  ca: {fileID: 0}
+  dead: 0
 --- !u!114 &687024946
 MonoBehaviour:
   m_ObjectHideFlags: 0

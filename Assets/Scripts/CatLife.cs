@@ -12,6 +12,7 @@ public class CatLife : MonoBehaviour
     [SerializeField] private AudioSource catDie;
     public GameManager gameManager;
     [SerializeField] private MouseLife mouse;
+    [SerializeField] private Rigidbody2D mo;
     public bool dead = false;
     // Start is called before the first frame update
     private void Start()
@@ -47,8 +48,6 @@ public class CatLife : MonoBehaviour
         StartCoroutine("Death");
         //if (death.Deads == 2)
         //{
-
-        //    // Reload();
         //    gameManager.GameRestart();
         //    Debug.Log(death.Deads + "cat");
         //}
@@ -94,6 +93,8 @@ public class CatLife : MonoBehaviour
             Debug.Log("cat.dead " + dead);
             Debug.Log("mouse.dead " + mouse.dead);
             gameManager.GameRestart();
+            mo.bodyType = RigidbodyType2D.Static;
+            myBody.bodyType = RigidbodyType2D.Static;
         }
     }
 }

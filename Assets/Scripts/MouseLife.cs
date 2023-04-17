@@ -11,6 +11,7 @@ public class MouseLife : MonoBehaviour
     [SerializeField] private AudioSource mouseDie;
     public GameManager gameManager;
     [SerializeField] private CatLife cat;
+    [SerializeField] private Rigidbody2D ca;
     public bool dead = false;
     // Start is called before the first frame update
     private void Start()
@@ -61,10 +62,6 @@ public class MouseLife : MonoBehaviour
         dead = true;
         Debug.Log("inside mouse" + dead);
 
-        //if (!gameObject.activeSelf && !cat.activeSelf)
-        //{
-        //    gameManager.GameRestart();
-        //}
     }
     private void outOfScreen()
     {
@@ -91,6 +88,8 @@ public class MouseLife : MonoBehaviour
             Debug.Log("cat.dead " + cat.dead);
             Debug.Log("mouse.dead " + dead);
             gameManager.GameRestart();
+            ca.bodyType = RigidbodyType2D.Static;
+            myBody.bodyType = RigidbodyType2D.Static;
         }
     }
 }

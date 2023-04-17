@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class MainManager : MonoBehaviour
     {
         
     }
+
     public void Easy()
     {
         SceneManager.LoadScene("Level 1");
@@ -27,5 +29,13 @@ public class MainManager : MonoBehaviour
     public void Hard()
     {
         SceneManager.LoadScene("Level 3");
+    }
+    public void med()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
+    }
+    public void Home()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
     }
 }

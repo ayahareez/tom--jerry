@@ -14,13 +14,25 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text dM;
     [SerializeField] private CatLife cat;
     [SerializeField] private MouseLife mouse;
-    private float distanceM;
-    private float distanceC;
+    [SerializeField] private SpriteRenderer catsp;
+    [SerializeField] private SpriteRenderer mousesp;
+    [SerializeField] private Rigidbody2D catRg;
+    [SerializeField] private Rigidbody2D mouseRg;
+    [SerializeField] private Animator catAnim;
+    [SerializeField] private Animator mouseAnim;
+    [SerializeField] private Text win;
+    [SerializeField] private Image winner;
+    public Sprite catWinSprite;
+    public Sprite mouseWinSprite;
+    public Image imageToChange;
+    public float distanceM;
+    public float distanceC;
     private float remainM;
     private float remainC;
-    public Rigidbody2D camera;
     public bool isActive=false;
     public bool isdead = false;
+    public static int winNumC;
+    public static int winNumM;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,38 +67,39 @@ public class GameManager : MonoBehaviour
     }
     public void GameRestart()
     {
-        camera.bodyType = RigidbodyType2D.Static;
-        camera.constraints = RigidbodyConstraints2D.FreezePositionX;
         gameRestart.SetActive(true);
         isActive= true;
         isdead = true;
+        catsp.enabled = false;
+        mousesp.enabled = false;
+        //catsp.size=new Vector2(0f,0f) ;
+        //mousesp.size = new Vector2(0f, 0f);
+        catRg.bodyType = RigidbodyType2D.Static;
+        mouseRg.bodyType = RigidbodyType2D.Static;
+        catAnim.SetBool("Idle", true);
+        mouseAnim.SetBool("Idle", true);
         //gameObject.SetActive(false);
-        camera.constraints = RigidbodyConstraints2D.FreezePositionX;
-        if (distanceM < 235)
-        {
-            dM.text = "Distance: " + distanceM.ToString("F0");
-        }
-        else 
-        {
-            dM.text = "Finish";
-        }
-        if (distanceC < 236)
-        {
-            dC.text = "Distance: " + distanceC.ToString("F0");
-        }
-        else if (distanceC == 236)
-        {
-            dC.text = "Finish";
-        }
+        dC.text = "Distance :   " + distanceC.ToString("F0");
+        dM.text = "Distance  :   " + distanceM.ToString("F0");
+
         if (distanceM > distanceC)
         {
             rankMouse.text = "1.st";
             rankCat.text = "2.nd";
+            win.text = "THE WINNER IS THE MOUSE";
+            winNumM++;
+            // winner.sprite = "2mouse";
+            //ChangeImage("2mouse");
+            UpdateWinnerImage(distanceM > distanceC);
         }
         else if(distanceC > distanceM)
         {
             rankMouse.text = "2.nd";
-            rankCat.text = "1.st"; 
+            rankCat.text = "1.st";
+            win.text = "THE WINNER IS THE CAT";
+            winNumC++;
+            //ChangeImage("6cat");
+            UpdateWinnerImage(distanceM > distanceC);
         }
         else
         { 
@@ -95,6 +108,33 @@ public class GameManager : MonoBehaviour
         }
        
 
+    }
+    //public void ChangeImage(string imageName)
+    //{
+    //    // Load the new texture
+    //    Texture2D newTexture = Resources.Load<Texture2D>(imageName);
+    //    if (newTexture == null)
+    //    {
+    //        Debug.LogError("Failed to load texture: " + imageName);
+    //        return;
+    //    }
+
+    //    // Create a new sprite from the texture
+    //    Sprite newSprite = Sprite.Create(newTexture, new Rect(0, 0, newTexture.width, newTexture.height), Vector2.zero);
+
+    //    // Set the Image component's sprite to the new sprite
+    //    winner.sprite = newSprite;
+    //}
+    public void UpdateWinnerImage(bool player1Wins)
+    {
+        if (player1Wins)
+        {
+            imageToChange.sprite = mouseWinSprite;
+        }
+        if(!player1Wins)
+        {
+            imageToChange.sprite = catWinSprite;
+        }
     }
     public void Resrart()
     {
@@ -107,5 +147,9 @@ public class GameManager : MonoBehaviour
     public void Next()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    public void Previous()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }

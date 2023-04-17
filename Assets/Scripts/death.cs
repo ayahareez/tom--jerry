@@ -9,10 +9,10 @@ public class death : MonoBehaviour
     public GameManager gameManager;
     [SerializeField] private CatLife cat;
     [SerializeField] private MouseLife mouse;
-    private Camera camera;
+    
     void Start()
     {
-        camera = GetComponent<Camera>();
+        
     }
 
     private void Update()

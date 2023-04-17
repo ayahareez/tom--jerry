@@ -1,17 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class Finish : MonoBehaviour
+public class SecondFlag : MonoBehaviour
 {
+    
     [SerializeField] private AudioSource finishSound;
-    public GameManager gameManager;
-    private bool isDead=false;
+    public Finish1 finish;
+    private bool isDead = false;
     // Start is called before the first frame update
     void Start()
     {
-      
+        
     }
 
     // Update is called once per frame
@@ -25,7 +25,8 @@ public class Finish : MonoBehaviour
         {
             isDead = true;
             finishSound.Play();
-            StartCoroutine("WaitFlag");
+            //StartCoroutine("WaitFlag");
+            finish.TheFinish();
             flag();
             //Destroy(collision.gameObject);
 
@@ -35,17 +36,17 @@ public class Finish : MonoBehaviour
     {
         Debug.Log("inside waitFlag");
         yield return new WaitForSeconds(1f);
-       // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        gameManager.GameRestart();
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
         
+
     }
     private void flag()
     {
         if (isDead)
         {
             Debug.Log("inside flag");
-            gameManager.GameRestart();
+            finish.TheFinish();
         }
     }
-
 }
