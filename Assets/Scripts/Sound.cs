@@ -39,9 +39,9 @@ public class Sound : MonoBehaviour
             case "collect":
                 audioSource.PlayOneShot(collectSound);
                 break;
-            case "finish":
-                audioSource.PlayOneShot(finishSound);
-                break;
+            //case "finish":
+            //    audioSource.PlayOneShot(finishSound);
+            //    break;
         }
     }
 }

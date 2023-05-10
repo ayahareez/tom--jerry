@@ -7,16 +7,7 @@ public class MainManager : MonoBehaviour
 {
     
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 
     public void Easy()
     {
@@ -32,10 +23,14 @@ public class MainManager : MonoBehaviour
     }
     public void med()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +2);
     }
     public void Home()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+    }
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

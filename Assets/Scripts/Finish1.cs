@@ -1,3 +1,4 @@
+﻿
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Finish1 : MonoBehaviour
 {
-    
+
     public GameManager gameManager;
     public GameObject finish;
     //[SerializeField] private Scene TheFinish;
@@ -22,13 +23,13 @@ public class Finish1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     //public void UpdateWinnerImage(bool player1Wins)
     //{
@@ -41,7 +42,7 @@ public class Finish1 : MonoBehaviour
     //        imageToChange.sprite = catWinSprite;
     //    }
     //}
-   
+
     public void TheFinish()
     {
         isActive = true;
@@ -61,10 +62,10 @@ public class Finish1 : MonoBehaviour
             // UpdateWinnerImage(GameManager.winNumC > GameManager.winNumM);
         }
     }
-    public void MainManue()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
+    //public void MainManue()
+    //{
+    //    SceneManager.LoadScene("MainMenu");
+    //}
     //private void flag()
     //{
     //    if (isDead)

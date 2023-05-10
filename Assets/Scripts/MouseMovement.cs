@@ -107,7 +107,7 @@ public class MouseMovement : MonoBehaviour
         {
             isGrounded = true;
         }
-        
+
         if (collision.gameObject.CompareTag("Fast"))
         {
             if (!gameManager.isActive && SceneManager.GetActiveScene().name == "Level 1")
@@ -119,13 +119,11 @@ public class MouseMovement : MonoBehaviour
                 boostSpeed = 27;
                 speed = boostSpeed;
             }
+
             StartCoroutine("ApplySpeedBoost");
             isFast = true;
         }
-        if (collision.gameObject.CompareTag("Flip"))
-        {
 
-        }
 
     }
 
@@ -136,4 +134,5 @@ public class MouseMovement : MonoBehaviour
         speed = normalSpeed;
         Debug.Log("the end");
     }
+
 }

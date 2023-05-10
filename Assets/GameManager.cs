@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public float distanceC;
     private float remainM;
     private float remainC;
-    public bool isActive=false;
+    public bool isActive = false;
     public bool isdead = false;
     public static int winNumC;
     public static int winNumM;
@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour
         Debug.Log(checkPoint.transform.position.x);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        
-        
+
+
 
     }
 
@@ -61,14 +61,14 @@ public class GameManager : MonoBehaviour
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-           
+
         }
 
     }
     public void GameRestart()
     {
         gameRestart.SetActive(true);
-        isActive= true;
+        isActive = true;
         isdead = true;
         catsp.enabled = false;
         mousesp.enabled = false;
@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
             //ChangeImage("2mouse");
             UpdateWinnerImage(distanceM > distanceC);
         }
-        else if(distanceC > distanceM)
+        else if (distanceC > distanceM)
         {
             rankMouse.text = "2.nd";
             rankCat.text = "1.st";
@@ -102,11 +102,11 @@ public class GameManager : MonoBehaviour
             UpdateWinnerImage(distanceM > distanceC);
         }
         else
-        { 
+        {
             rankMouse.text = "1.st";
             rankCat.text = "1.st";
         }
-       
+
 
     }
     //public void ChangeImage(string imageName)
@@ -131,9 +131,20 @@ public class GameManager : MonoBehaviour
         {
             imageToChange.sprite = mouseWinSprite;
         }
-        if(!player1Wins)
+        if (!player1Wins)
         {
             imageToChange.sprite = catWinSprite;
+        }
+    }
+    public void level()
+    {
+        if(SceneManager.GetActiveScene().name=="Level 1")
+        {
+            Next();
+        }
+        if(SceneManager.GetActiveScene().name == "Level 2")
+        {
+            Next2();
         }
     }
     public void Resrart()
@@ -144,12 +155,19 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
     public void Next()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    public void Next2()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1);
+    }
+
     public void Previous()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
+
 }
